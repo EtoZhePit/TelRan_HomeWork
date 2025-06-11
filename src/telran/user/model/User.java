@@ -40,7 +40,7 @@ public class User {
             return false;
         }
 
-        if (email.lastIndexOf('.') > email.length() - 2) {
+        if (email.lastIndexOf('.') >= email.length() - 2) {
             return false;
         }
         if (email.indexOf('@') > email.indexOf('.')) {

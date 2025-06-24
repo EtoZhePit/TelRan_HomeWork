@@ -15,7 +15,6 @@ public class GarageImpl implements Garage{
 
     @Override
     public boolean addCar(Car car) {
-        // Если в массиве есть место и не занят рег, то добавляем, а сайз увеличиваем
             if (car == null || cars.length == size || findCarByRegNumber(car.getRegNumber()) != null ) {
             return false;
     }
@@ -25,10 +24,7 @@ public class GarageImpl implements Garage{
     }
 
     @Override
-    public Car removeCar(String regNumber) { // проходим по массиву.
-        // если массив рег намбер не налл, то продолжаем
-        // если есть совпадение, то добавляем файрд, туда отправляем исключение, а так же на место последнего
-        // и сайз--
+    public Car removeCar(String regNumber) {
 
         if (findCarByRegNumber(regNumber) == null)
         return null;
@@ -46,9 +42,7 @@ public class GarageImpl implements Garage{
     }
 
     @Override
-    public Car findCarByRegNumber(String regNumber) { // Мы проходим по массиву.
-        // Если в массиве находится намбер - то возвращаем его.
-
+    public Car findCarByRegNumber(String regNumber) { 
         for (int i = 0; i < size ; i++) {
             if (cars[i] != null && cars[i].getRegNumber().equals(regNumber)) {
                 return cars[i];
@@ -60,8 +54,7 @@ public class GarageImpl implements Garage{
     }
 
     @Override
-    public Car[] findCarsByModel(String model) { // проходим по массиву.
-        // Если находим совмпадение по модели, то возвращаем в массив
+    public Car[] findCarsByModel(String model) { 
         Predicate <Car> predicate = new Predicate<Car>() {
             @Override
             public boolean test(Car car) {
@@ -90,9 +83,7 @@ public class GarageImpl implements Garage{
         return size;
     }
 
-    private Car[] findCarsByPredicate (Predicate <Car> predicate) { // проходим по массиву сайз 
-        // если идет совпадение по предикату - то каунт++ 
-        // А потом идем по массиву каунт
+    private Car[] findCarsByPredicate (Predicate <Car> predicate) {
     int count = 0;
         for (int i = 0; i < size; i++) {
             if (predicate.test(cars[i])){
